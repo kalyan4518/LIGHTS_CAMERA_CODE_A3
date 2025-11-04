@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TFI Power House</title>
+  <style>
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #0b0b0d;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 0;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url('assets/hero-fans.jpg') center/cover no-repeat;
+  filter: blur(8px);
+  opacity: 0.6;
+  z-index: -2;
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(11,11,13,0.65);
+  z-index: -1;
+}
+
+/* ===== HEADER / NAVBAR ===== */
+/* ===== HEADER / NAVBAR ===== */
+header {
+  background: #111;
+  padding: 20px 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  text-align: center;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffcc00;
+  text-decoration: none;
+  margin-bottom: 8px;
+}
+
+.user-badge {
+  position: absolute;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  padding: 8px 16px;
+  display: none;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  box-shadow: 0 0 12px rgba(0,0,0,0.5);
+}
+
+.user-badge::before {
+  content: "🎟️";
+}
+
+.user-badge span {
+  font-weight: 600;
+  letter-spacing: 0.4px;
+}
+
+.user-badge.show {
+  display: inline-flex;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ffcc00;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.8rem;
+  margin: 30px 0 15px;
+  font-weight: bold;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 1rem;
+  color: #bbb;
+  margin-bottom: 30px;
+}
+
+/* ===== MAIN CONTAINER ===== */
+.main-container {
+  display: flex;
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.left-content { flex: 2; }
+.right-sidebar {
+  flex: 1;
+  background: rgba(255,255,255,0.05);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
+  position: sticky;
+  top: 100px;
+  height: 600px;
+  overflow: hidden;
+}
+
+.scroll-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: scrollUp 30s linear infinite;
+}
+.scroll-container:hover { animation-play-state: paused; }
+.scroll-item img {
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.scroll-item img:hover { transform: scale(1.05); }
+.scroll-item p {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin: 5px 0 0 0;
+}
+@keyframes scrollUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+/* ===== MODAL STYLES ===== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+}
+.modal-content, #trailerFrame {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 10px;
+}
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+/* ===== TOP 5 GROSSERS CAROUSEL ===== */
+.carousel-container {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 1100px;
+}
+.carousel {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px;
+}
+.carousel::-webkit-scrollbar { display: none; }
+.carousel-card {
+  flex: 0 0 auto;
+  width: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+.carousel-card:hover { transform: scale(1.07); }
+.carousel-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+.carousel-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+/* ===== STATS SECTION ===== */
+.stats {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+.stat-box {
+  background: rgba(255,255,255,0.05);
+  border-radius: 14px;
+  padding: 20px 40px;
+  text-align: center;
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
+  min-width: 150px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.stat-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px rgba(255,0,80,0.3);
+}
+.stat-title { font-size: 1.1rem; color: #bbb; }
+.stat-value { font-size: 1.6rem; font-weight: bold; }
+
+/* ===== HERO GRID ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 15px;
+  max-width: 1200px;
+  margin: 0 auto 50px;
+}
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  backdrop-filter: blur(6px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.7);
+}
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+.card h2 {
+  font-size: 1rem;
+  margin: 8px 0 2px;
+  text-align: center;
+  color: #ffcc00;
+}
+.card p {
+  font-size: 0.8rem;
+  color: #ccc;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+/* ===== MOVIE ANALYZER ===== */
+.analysis-section {
+  background: rgba(255,255,255,0.06);
+  border-radius: 18px;
+  padding: 30px;
+  max-width: 1100px;
+  margin: 40px auto;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.55);
+  backdrop-filter: blur(8px);
+  position: relative;
+  overflow: hidden;
+}
+.analysis-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(255,204,0,0.18), transparent 45%),
+              radial-gradient(circle at bottom left, rgba(230,57,70,0.18), transparent 40%);
+  pointer-events: none;
+  z-index: 0;
+}
+.analysis-section-content {
+  position: relative;
+  z-index: 1;
+}
+.analysis-section h2 {
+  font-size: 2rem;
+  margin: 0 0 10px;
+  text-align: center;
+}
+.analysis-section p.section-hint {
+  text-align: center;
+  color: #bcbcbc;
+  margin: 0 0 25px;
+  font-size: 0.95rem;
+}
+.analysis-inputs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+.analysis-inputs .input-group {
+  display: flex;
+  flex-direction: column;
+}
+.analysis-inputs label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #ffcc00;
+}
+.analysis-inputs input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.analysis-inputs input:focus {
+  outline: none;
+  border-color: rgba(255,204,0,0.8);
+  box-shadow: 0 0 12px rgba(255,204,0,0.35);
+}
+.analysis-actions {
+  margin-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+}
+.analysis-actions button {
+  background: linear-gradient(135deg, #e63946, #ffcc00);
+  color: #0b0b0d;
+  border: none;
+  padding: 14px 36px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.analysis-actions button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(230,57,70,0.45);
+}
+.analysis-result {
+  margin-top: 25px;
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.12);
+  display: none;
+  text-align: center;
+  box-shadow: inset 0 0 0 rgba(0,0,0,0);
+  transition: box-shadow 0.5s ease;
+}
+.analysis-result.show {
+  display: block;
+  animation: fadeUp 0.45s ease;
+}
+.analysis-result h3 {
+  margin: 0 0 10px;
+  font-size: 1.3rem;
+}
+.analysis-result p {
+  margin: 6px 0;
+  color: #e0e0e0;
+}
+.analysis-result .profit {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.analysis-result .ratio-label {
+  font-size: 0.95rem;
+  color: #d0d0d0;
+}
+.analysis-ratio-bar {
+  margin-top: 18px;
+  width: 100%;
+  height: 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  overflow: hidden;
+}
+.analysis-ratio-fill {
+  height: 100%;
+  width: 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #1dd1a1, #ffcc00);
+  transition: width 0.6s ease;
+}
+.analysis-feedback {
+  color: #ff7675;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.result-industry-hit {
+  background: rgba(29, 209, 161, 0.18);
+  border-color: rgba(29, 209, 161, 0.6);
+  box-shadow: inset 0 0 20px rgba(29,209,161,0.25);
+}
+.result-blockbuster {
+  background: rgba(255, 215, 0, 0.16);
+  border-color: rgba(255, 215, 0, 0.6);
+  box-shadow: inset 0 0 20px rgba(255,215,0,0.2);
+}
+.result-super-hit {
+  background: rgba(255, 159, 67, 0.15);
+  border-color: rgba(255, 159, 67, 0.55);
+  box-shadow: inset 0 0 20px rgba(255,159,67,0.18);
+}
+.result-hit {
+  background: rgba(72, 219, 251, 0.15);
+  border-color: rgba(72, 219, 251, 0.5);
+  box-shadow: inset 0 0 20px rgba(72,219,251,0.18);
+}
+.result-average {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.35);
+  box-shadow: inset 0 0 20px rgba(255,255,255,0.12);
+}
+.result-flop {
+  background: rgba(230, 57, 70, 0.15);
+  border-color: rgba(230, 57, 70, 0.55);
+  box-shadow: inset 0 0 20px rgba(230,57,70,0.2);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.analysis-section .glow-orb {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.35;
+  pointer-events: none;
+  animation: orbPulse 8s ease-in-out infinite;
+}
+.glow-orb.orb-1 {
+  background: #ffcc00;
+  top: -60px;
+  right: -40px;
+}
+.glow-orb.orb-2 {
+  background: #e63946;
+  bottom: -80px;
+  left: -70px;
+  animation-delay: 2s;
+}
+@keyframes orbPulse {
+  0%,100% { transform: scale(0.9); opacity: 0.3; }
+  50% { transform: scale(1.1); opacity: 0.45; }
+}
+
+.hidden { display: none !important; }
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1200px){
+  .grid { grid-template-columns: repeat(3, 1fr); }
+  .main-container { flex-direction: column; }
+  .right-sidebar { position: relative; top: auto; margin-top: 30px; height:auto; }
+  .scroll-container { animation:none; }
+}
+@media(max-width:768px){ .grid { grid-template-columns: repeat(2, 1fr); } }
+@media(max-width:480px){ .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-content">
+    <div class="user-badge" id="userBadge"><span></span></div>
+    <a href="#" class="logo">LIGHTS CAMERA CODE </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="boxoffice.html">Box Office</a>
+      <a href="director.html">Directors</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+
+<div class="main-container">
+  <div class="left-content">
+
+    <h1>Top 5 Grossers</h1>
+    <div class="carousel-container">
+      <div class="carousel">
+        <div class="carousel-card" data-trailer="https://www.youtube.com/embed/G62HrubdD6o">
+          <img src="baahubali2.jpg" alt="Baahubali 2">
+          <div class="carousel-title">Baahubali 2</div>
+        </div>
+        <div class="carousel-card" data-trailer="https://www.youtube.com/embed/tL5cuEzJ19A">
+          <img src="pushpa.png" alt="Pushpa 2">
+          <div class="carousel-title">Pushpa: The Rule</div>
+        </div>
+        <div class="carousel-card" data-trailer="https://youtu.be/NgBoMJy386M?si=gCzYaT7l-AzWR7Nh">
+          <img src="rrr.png" alt="RRR">
+          <div class="carousel-title">RRR</div>
+        </div>
+        <div class="carousel-card" data-trailer="https://www.youtube.com/embed/LQ0Obge281c">
+          <img src="kalki.png" alt="Kalki 2898 AD">
+          <div class="carousel-title">Kalki 2898 AD</div>
+        </div>
+        <div class="carousel-card" data-trailer="https://youtu.be/phhNTEjc_6I?si=AkCPQ5cELLD0jLGO">
+          <img src="bb 1.jpg" alt="Baahubali 1">
+          <div class="carousel-title">Baahubali 1</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="trailerModal">
+      <span class="close-btn" onclick="closeTrailerModal()">✖</span>
+      <iframe id="trailerFrame" src="" allow="autoplay" allowfullscreen></iframe>
+    </div>
+
+    <h1>Industry at a <span style="color:#e63946;">Glance</span></h1>
+    <p class="section-subtitle">Celebrating the success and achievements of Telugu cinema's biggest stars</p>
+
+    <div class="stats">
+      <div class="stat-box"><div class="stat-value">₹10,000+ Cr</div><div class="stat-title">Total Collection</div></div>
+      <div class="stat-box"><div class="stat-value">6</div><div class="stat-title">Top Actors</div></div>
+      <div class="stat-box"><div class="stat-value">106</div><div class="stat-title">Hit Movies</div></div>
+      <div class="stat-box"><div class="stat-value">17</div><div class="stat-title">Awards Won</div></div>
+    </div>
+
+    <section class="analysis-section" id="movieAnalyzer">
+      <span class="glow-orb orb-1"></span>
+      <span class="glow-orb orb-2"></span>
+      <div class="analysis-section-content">
+        <h2>Movie Success Analyzer</h2>
+        <p class="section-hint">Feed in the budget and worldwide collection to see how the trade would tag your film.</p>
+
+        <div class="analysis-inputs">
+          <div class="input-group">
+            <label for="budgetInput">Budget (₹ Crores)</label>
+            <input type="number" id="budgetInput" min="0" step="0.01" placeholder="e.g. 120" />
+          </div>
+          <div class="input-group">
+            <label for="collectionInput">Collection (₹ Crores)</label>
+            <input type="number" id="collectionInput" min="0" step="0.01" placeholder="e.g. 480" />
+          </div>
+        </div>
+
+        <div class="analysis-actions">
+          <button type="button" id="analysisBtn">Get Analysis</button>
+          <span class="analysis-feedback" id="analysisFeedback"></span>
+        </div>
+
+        <div class="analysis-result" id="analysisResult">
+          <h3 id="analysisStatus"></h3>
+          <p class="profit" id="analysisProfit"></p>
+          <p class="ratio-label" id="analysisRatio"></p>
+          <div class="analysis-ratio-bar">
+            <div class="analysis-ratio-fill" id="analysisRatioFill"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <h1>Meet the <span style="color:#ffcc00;">Superstars</span></h1>
+    <p class="section-subtitle">Discover the legendary actors who have shaped Telugu cinema</p>
+
+    <div class="grid">
+      <a href="prabhas.html" class="card"><img src="saaho.png" alt="Prabhas"><h2>Prabhas</h2><p>First and biggest Pan-India star known for high movie spectacles</p></a>
+      <a href="aa.html" class="card"><img src="aaa.png" alt="Allu Arjun"><h2>Allu Arjun</h2><p>Stylish star known for his dance moves and versatile performances</p></a>
+      <a href="mahesh.html" class="card"><img src="mb.png" alt="Mahesh Babu"><h2>Mahesh Babu</h2><p>One of Telugu cinema’s most consistent performers with a global fanbase</p></a>
+      <a href="ntr.html" class="card"><img src="ntrrr.png" alt="Jr NTR"><h2>Jr NTR</h2><p>Dynamic performer known for his energy and RRR’s global success</p></a>
+      <a href="pk.html" class="card"><img src="pkk.png" alt="Pawan Kalyan"><h2>Pawan Kalyan</h2><p>Mass hero with a huge fan following and political career</p></a>
+      <a href="nani.html" class="card"><img src="naniii.png" alt="Nani"><h2>Nani</h2><p>Natural performer known for his versatility and content-driven films</p></a>
+    </div>
+
+  </div>
+
+  <div class="right-sidebar">
+    <h2>BTS & Movie Updates</h2>
+    <div class="scroll-container" id="imageScrollContainer"></div>
+  </div>
+</div>
+
+<!-- Image Modal -->
+<div id="imgModal" class="modal">
+  <span class="close-btn" onclick="closeImgModal()">✖</span>
+  <img class="modal-content" id="modalImage">
+</div>
+
+<script>
+// Personalize header with stored user name from login
+const userBadgeEl = document.getElementById("userBadge");
+const storedUserName = sessionStorage.getItem("lcc_user_name");
+if (userBadgeEl && storedUserName) {
+  const nameSlot = userBadgeEl.querySelector("span");
+  if (nameSlot) {
+    nameSlot.textContent = storedUserName;
+    userBadgeEl.classList.add("show");
+  }
+}
+
+// Carousel Trailer Modal
+const trailerModal = document.getElementById("trailerModal");
+const trailerFrame = document.getElementById("trailerFrame");
+document.querySelectorAll(".carousel-card").forEach(card => {
+  card.addEventListener("click", () => {
+    trailerFrame.src = card.dataset.trailer + "?autoplay=1";
+    trailerModal.style.display = "flex";
+  });
+});
+function closeTrailerModal() {
+  trailerModal.style.display = "none";
+  trailerFrame.src = "";
+}
+
+// BTS Image Scroll
+const images = [
+  {src: 'bts1.png', caption: 'Movie 1 - BTS/Update'},
+  {src: 'bts2.png', caption: 'Movie 2 - BTS/Update'},
+  {src: 'bts3.png', caption: 'Movie 3 - BTS/Update'},
+  {src: 'bts4.png', caption: 'Movie 4 - BTS/Update'},
+  {src: 'bts5.png', caption: 'Movie 5 - BTS/Update'},
+  {src: 'bts6.png', caption: 'Movie 6 - BTS/Update'},
+  {src: 'bts7.png', caption: 'Movie 7 - BTS/Update'},
+  {src: 'bts8.png', caption: 'Movie 8 - BTS/Update'}
+];
+const container = document.getElementById("imageScrollContainer");
+images.forEach(imgObj => {
+  const div = document.createElement("div");
+  div.className = "scroll-item";
+  div.innerHTML = `<img src="${imgObj.src}" alt="${imgObj.caption}" class="popup-img"><p>${imgObj.caption}</p>`;
+  container.appendChild(div);
+});
+
+// Movie Success Analyzer
+const budgetInput = document.getElementById("budgetInput");
+const collectionInput = document.getElementById("collectionInput");
+const analysisBtn = document.getElementById("analysisBtn");
+const feedbackEl = document.getElementById("analysisFeedback");
+const resultEl = document.getElementById("analysisResult");
+const statusEl = document.getElementById("analysisStatus");
+const profitEl = document.getElementById("analysisProfit");
+const ratioEl = document.getElementById("analysisRatio");
+const ratioFillEl = document.getElementById("analysisRatioFill");
+const apiBase = typeof window.MOVIE_ANALYZER_API === 'string' && window.MOVIE_ANALYZER_API.trim() ? window.MOVIE_ANALYZER_API : null;
+
+const analyzerBands = [
+  { threshold: 4, label: "Industry Hit", css: "result-industry-hit", tone: "Legendary run!" },
+  { threshold: 3, label: "Blockbuster", css: "result-blockbuster", tone: "Box office rampage." },
+  { threshold: 2.5, label: "Super Hit", css: "result-super-hit", tone: "Stellar performer." },
+  { threshold: 2, label: "Hit", css: "result-hit", tone: "Solid victory at the ticket window." },
+  { threshold: 1, label: "Average", css: "result-average", tone: "Broke even with room to grow." }
+];
+
+function resetResult() {
+  resultEl.className = "analysis-result";
+  resultEl.classList.remove("show");
+  ratioFillEl.style.width = "0%";
+}
+
+analysisBtn?.addEventListener("click", () => {
+  const budget = parseFloat(budgetInput.value);
+  const collection = parseFloat(collectionInput.value);
+
+  if (!Number.isFinite(budget) || !Number.isFinite(collection) || budget <= 0 || collection < 0) {
+    feedbackEl.textContent = "Enter valid positive numbers for budget and collection.";
+    resetResult();
+    return;
+  }
+
+  feedbackEl.textContent = "";
+
+  const ratio = collection / budget;
+  const profitPercent = ((collection - budget) / budget) * 100;
+
+  let statusConfig = analyzerBands.find(band => ratio >= band.threshold);
+  let cssClass = "result-flop";
+  let statusLabel = "Flop";
+  let tone = "Couldn’t recover its investment.";
+
+  if (statusConfig) {
+    statusLabel = statusConfig.label;
+    cssClass = statusConfig.css;
+    tone = statusConfig.tone;
+  } else if (ratio >= 0.9) {
+    statusLabel = "Below Average";
+    cssClass = "result-average";
+    tone = "Close to the break-even line.";
+  }
+
+  statusEl.textContent = `${statusLabel}`;
+  profitEl.textContent = `Profit %: ${profitPercent >= 0 ? "+" : ""}${profitPercent.toFixed(1)}%`;
+  ratioEl.textContent = `Collection to budget ratio: ${ratio.toFixed(2)}× — ${tone}`;
+
+  resultEl.className = `analysis-result show ${cssClass}`;
+
+  const fillWidth = Math.min((ratio / 4) * 100, 100);
+  ratioFillEl.style.width = `${fillWidth}%`;
+
+  const payload = {
+    budget,
+    collection,
+    status: statusLabel,
+    ratio,
+    profitPercent
+  };
+
+  if (apiBase) {
+    fetch(`${apiBase.replace(/\/$/, '')}/api/analysis`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).catch(() => {
+      console.warn('Analysis log was not persisted.');
+    });
+  }
+});
+
+// Image Modal
+const modal = document.getElementById("imgModal");
+const modalImg = document.getElementById("modalImage");
+document.addEventListener("click", function(e){
+  if(e.target.classList.contains("popup-img")){
+    modal.style.display = "flex";
+    modalImg.src = e.target.src;
+  }
+});
+function closeImgModal() {
+  modal.style.display = "none";
+}
+</script>
+</body>
+</html>

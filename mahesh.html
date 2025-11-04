@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mahesh Babu — Superstar Dashboard & Filmography</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { background: #000; color: #fff; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    header.hero {
+      background: url("gunturkaram.jpg") center/cover no-repeat;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    header.hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
+    }
+    header.hero h1 {
+      position: relative;
+      font-size: 3em;
+      color: #fff;
+      z-index: 2;
+      text-shadow: 0 0 10px #00b7ff;
+    }
+    .bio {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      font-size: 1.1em;
+    }
+    .grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; padding: 20px; }
+    .card {
+      background: #181818;
+      border-radius: 10px;
+      width: 260px;
+      overflow: hidden;
+      box-shadow: 0 0 12px rgba(0,183,255,0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(0,183,255,0.9); }
+    .card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+    .info { padding: 12px; }
+    .title { font-size: 1em; font-weight: bold; margin-bottom: 4px; color: #fff; }
+    .year { color: #bbb; margin-bottom: 6px; }
+    .link { display: block; margin: 4px 0; color: #00b7ff; text-decoration: none; font-size: 0.9em; }
+    .charts { background: #111; padding: 30px; text-align: center; }
+    canvas { max-width: 800px; margin: 20px auto; display: block; }
+    .back-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #00b7ff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 10px rgba(0,183,255,0.8);
+      transition: background 0.3s ease;
+    }
+    .back-btn:hover { background: #008ecc; }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>Mahesh Babu — Superstar</h1>
+  </header>
+
+  <section class="bio">
+    Mahesh Babu, fondly known as the Superstar of Telugu cinema, is one of the most influential and highest-paid actors in India. 
+    Known for his charm, versatility, and box office dominance, he has delivered numerous blockbusters that have redefined Telugu film standards.
+  </section>
+
+  <div class="grid">
+    <!-- Mahesh Babu Full Filmography -->
+    <div class="card"><img src="rajakumarudu.png.png" alt="Raja Kumarudu"><div class="info"><div class="title">Raja Kumarudu</div><div class="year">1999</div><a class="link" href="https://www.youtube.com/watch?v=w2AY7xB8Cck" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="yuvaraju.png.png" alt="Yuvaraju"><div class="info"><div class="title">Yuvaraju</div><div class="year">2000</div><a class="link" href="https://www.youtube.com/watch?v=RhJytYQpYus" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="vamsi.png.png" alt="Vamsi"><div class="info"><div class="title">Vamsi</div><div class="year">2000</div><a class="link" href="https://www.youtube.com/watch?v=W6Q0xczfDgA" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="murari.png.png" alt="Murari"><div class="info"><div class="title">Murari</div><div class="year">2001</div><a class="link" href="https://www.youtube.com/watch?v=hvmdwzPLkK8" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="takkari donga.png.png" alt="Takkari Donga"><div class="info"><div class="title">Takkari Donga</div><div class="year">2002</div><a class="link" href="https://www.youtube.com/watch?v=8wZBjE_5Okg" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="bobby.png.png" alt="Bobby"><div class="info"><div class="title">Bobby</div><div class="year">2002</div><a class="link" href="https://www.youtube.com/watch?v=nsXmuE9NoVE" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="okkadu.png.png" alt="Okkadu"><div class="info"><div class="title">Okkadu</div><div class="year">2003</div><a class="link" href="https://www.youtube.com/watch?v=Tvz94GpjL9A" target="_blank">Watch Trailer</a><a class="link" href="https://en.wikipedia.org/wiki/Okkadu#Box_office" target="_blank">₹28 cr WW</a></div></div>
+    <div class="card"><img src="nijam.png.png" alt="Nijam"><div class="info"><div class="title">Nijam</div><div class="year">2003</div><a class="link" href="https://www.youtube.com/watch?v=tZKyr5lSgfw" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="nani.png.png" alt="Naani"><div class="info"><div class="title">Naani</div><div class="year">2004</div><a class="link" href="https://www.youtube.com/watch?v=Zbd8Z-UVMDs" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="arjun.png.png" alt="Arjun"><div class="info"><div class="title">Arjun</div><div class="year">2004</div><a class="link" href="https://www.youtube.com/watch?v=c5S3Bkq6J9g" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="athadu.png.png" alt="Athadu"><div class="info"><div class="title">Athadu</div><div class="year">2005</div><a class="link" href="https://www.youtube.com/watch?v=AJxFcmcL8nA" target="_blank">Watch Trailer</a><a class="link" href="https://en.wikipedia.org/wiki/Athadu#Box_office" target="_blank">₹30 cr WW</a></div></div>
+    <div class="card"><img src="pokiri.png.png" alt="Pokiri"><div class="info"><div class="title">Pokiri</div><div class="year">2006</div><a class="link" href="https://www.youtube.com/watch?v=1dZTlAqAF7U" target="_blank">Watch Trailer</a><a class="link" href="https://en.wikipedia.org/wiki/Pokiri#Box_office" target="_blank">₹66 cr WW</a></div></div>
+    <div class="card"><img src="srimanthudu.png.png" alt="Sainikudu"><div class="info"><div class="title">Sainikudu</div><div class="year">2006</div><a class="link" href="https://www.youtube.com/watch?v=gSgNUwyLk_A" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="athidhi.png.png" alt="Athidhi"><div class="info"><div class="title">Athidhi</div><div class="year">2007</div><a class="link" href="https://www.youtube.com/watch?v=hv6VRcBiBvE" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="khaleja.png.png" alt="Khaleja"><div class="info"><div class="title">Khaleja</div><div class="year">2010</div><a class="link" href="https://www.youtube.com/watch?v=6zvEihQYq_o" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="dookudu.png.png" alt="Dookudu"><div class="info"><div class="title">Dookudu</div><div class="year">2011</div><a class="link" href="https://www.youtube.com/watch?v=AEbU9lmNSK8" target="_blank">Watch Trailer</a><a class="link" href="https://en.wikipedia.org/wiki/Dookudu#Box_office" target="_blank">₹101 cr WW</a></div></div>
+    <div class="card"><img src="business man.png.png" alt="Businessman"><div class="info"><div class="title">Businessman</div><div class="year">2012</div><a class="link" href="https://www.youtube.com/watch?v=MYQRRdqU8hA" target="_blank">Watch Trailer</a><a class="link" href="https://en.wikipedia.org/wiki/Businessman_(film)#Box_office" target="_blank">₹92 cr WW</a></div></div>
+    <div class="card"><img src="svsc.png.png" alt="Seethamma Vakitlo Sirimalle Chettu"><div class="info"><div class="title">SVSC</div><div class="year">2013</div><a class="link" href="https://www.youtube.com/watch?v=ZySMx50fN60" target="_blank">Watch Trailer</a><a class="link" href="https://en.wikipedia.org/wiki/Seethamma_Vakitlo_Sirimalle_Chettu#Box_office" target="_blank">₹75 cr WW</a></div></div>
+    <div class="card"><img src="1 nenokkadine.png.png" alt="1 Nenokkadine"><div class="info"><div class="title">1: Nenokkadine</div><div class="year">2014</div><a class="link" href="https://www.youtube.com/watch?v=OshV2m4PAws" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="aagadu.png.png" alt="Aagadu"><div class="info"><div class="title">Aagadu</div><div class="year">2014</div><a class="link" href="https://www.youtube.com/watch?v=Z3wVnKSlG7E" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="srimanthudu.png.png" alt="Srimanthudu"><div class="info"><div class="title">Srimanthudu</div><div class="year">2015</div><a class="link" href="https://www.youtube.com/watch?v=fB4rqUJUaxI" target="_blank">Watch Trailer</a><a class="link" href="https://en.wikipedia.org/wiki/Srimanthudu#Box_office" target="_blank">₹144 cr WW</a></div></div>
+    <div class="card"><img src="bramhotsavam.png.png" alt="Brahmotsavam"><div class="info"><div class="title">Brahmotsavam</div><div class="year">2016</div><a class="link" href="https://www.youtube.com/watch?v=ylLtC1xd95A" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="spyder.png.png" alt="Spyder"><div class="info"><div class="title">Spyder</div><div class="year">2017</div><a class="link" href="https://www.youtube.com/watch?v=tMWV0DsO9ZM" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="bharat ane nenu.png.png" alt="Bharat Ane Nenu"><div class="info"><div class="title">Bharat Ane Nenu</div><div class="year">2018</div><a class="link" href="https://www.youtube.com/watch?v=wnzvDD4bxJ4" target="_blank">Watch Trailer</a><a class="link" href="https://en.wikipedia.org/wiki/Bharat_Ane_Nenu#Box_office" target="_blank">₹225 cr WW</a></div></div>
+    <div class="card"><img src="maharshi.png.png" alt="Maharshi"><div class="info"><div class="title">Maharshi</div><div class="year">2019</div><a class="link" href="https://www.youtube.com/watch?v=MGaI_YdjZ-M" target="_blank">Watch Trailer</a><a class="link" href="https://en.wikipedia.org/wiki/Maharshi_(2019_film)#Box_office" target="_blank">₹175 cr WW</a></div></div>
+    <div class="card"><img src="sarileru.png.png" alt="Sarileru Neekevvaru"><div class="info"><div class="title">Sarileru Neekevvaru</div><div class="year">2020</div><a class="link" href="https://www.youtube.com/watch?v=efMl2LCI9K8" target="_blank">Watch Trailer</a><a class="link" href="https://en.wikipedia.org/wiki/Sarileru_Neekevvaru#Box_office" target="_blank">₹260 cr WW</a></div></div>
+    <div class="card"><img src="sarkaru vari paata.png.png" alt="Sarkaru Vaari Paata"><div class="info"><div class="title">Sarkaru Vaari Paata</div><div class="year">2022</div><a class="link" href="https://www.youtube.com/watch?v=NTm3YFhO3HU" target="_blank">Watch Trailer</a><a class="link" href="https://en.wikipedia.org/wiki/Sarkaru_Vaari_Paata#Box_office" target="_blank">₹230 cr WW</a></div></div>
+    <div class="card"><img src="guntur kharam.png.png" alt="Guntur Kaaram"><div class="info"><div class="title">Guntur Kaaram</div><div class="year">2024</div><a class="link" href="https://www.youtube.com/watch?v=QmP9hvYwBzk" target="_blank">Watch Trailer</a><a class="link" href="https://en.wikipedia.org/wiki/Guntur_Kaaram#Box_office" target="_blank">₹265 cr WW</a></div></div>
+  </div>
+
+  <a href="index.html" class="back-btn">⬅ Back to Home</a>
+
+  <script>
+  const movies = [
+    { title: 'Pokiri', collection: 66, year: 2006 },
+    { title: 'Dookudu', collection: 101, year: 2011 },
+    { title: 'Businessman', collection: 92, year: 2012 },
+    { title: 'Srimanthudu', collection: 144, year: 2015 },
+    { title: 'Bharat Ane Nenu', collection: 225, year: 2018 },
+    { title: 'Maharshi', collection: 175, year: 2019 },
+    { title: 'Sarileru Neekevvaru', collection: 260, year: 2020 },
+    { title: 'Sarkaru Vaari Paata', collection: 230, year: 2022 },
+    { title: 'Guntur Kaaram', collection: 265, year: 2024 }
+  ];
+
+  const sortedMovies = [...movies].sort((a, b) => a.year - b.year);
+
+
+  </script>
+</body>
+</html>

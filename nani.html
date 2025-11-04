@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nani — Natural Star Dashboard & Filmography</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { background: #000; color: #fff; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    header.hero {
+      background: url("") center/cover no-repeat;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    header.hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
+    }
+    header.hero h1 {
+      position: relative;
+      font-size: 3em;
+      color: #fff;
+      z-index: 2;
+      text-shadow: 0 0 10px #00ff9d;
+    }
+    .bio {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      font-size: 1.1em;
+    }
+    .grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; padding: 20px; }
+    .card {
+      background: #181818;
+      border-radius: 10px;
+      width: 260px;
+      overflow: hidden;
+      box-shadow: 0 0 12px rgba(0,255,157,0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(0,255,157,0.9); }
+    .card img { width: 100%; aspect-ratio: 16 / 9; height: auto; object-fit: cover; }
+    .info { padding: 12px; }
+    .title { font-size: 1em; font-weight: bold; margin-bottom: 4px; color: #fff; }
+    .year { color: #bbb; margin-bottom: 6px; }
+    .link { display: block; margin: 4px 0; color: #00ff9d; text-decoration: none; font-size: 0.9em; }
+    .charts { background: #111; padding: 30px; text-align: center; }
+    canvas { max-width: 800px; margin: 20px auto; display: block; }
+    .back-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #00ff9d;
+      color: #000;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 10px rgba(0,255,157,0.8);
+      transition: background 0.3s ease;
+    }
+    .back-btn:hover { background: #00d786; }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>Nani — Natural Star</h1>
+  </header>
+
+  <section class="bio">
+    Nani, fondly known as the Natural Star, is one of Telugu cinema’s most versatile actors. 
+    Known for his charm, realistic performances, and strong scripts, Nani has built a solid career with 
+    a mix of romantic dramas, family entertainers, and impactful stories.
+  </section>
+
+  <div class="grid">
+    <!-- Full Filmography Cards (30 Films) -->
+    <div class="card"><img src="ashta.png.png" alt="Ashta Chamma"><div class="info"><div class="title">Ashta Chamma</div><div class="year">2008</div><a class="link" href="https://www.youtube.com/watch?v=XuKQJxoJfsM" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="ride.png.png" alt="Ride"><div class="info"><div class="title">Ride</div><div class="year">2009</div><a class="link" href="https://www.youtube.com/watch?v=zA9ugP4MR1M" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="sne.png.png" alt="Snehituda"><div class="info"><div class="title">Snehituda</div><div class="year">2009</div><a class="link" href="https://www.youtube.com/watch?v=sKXJYYT2XVI" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="bhee" alt="Bheemili Kabaddi Jattu"><div class="info"><div class="title">Bheemili Kabaddi Jattu</div><div class="year">2010</div><a class="link" href="https://www.youtube.com/watch?v=Y9vR6bfyDJM" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="ala.png.png" alt="Ala Modalaindi"><div class="info"><div class="title">Ala Modalaindi</div><div class="year">2011</div><a class="link" href="https://www.youtube.com/watch?v=xe8pOAyLGMg" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="pilla.png.png" alt="Pilla Zamindar"><div class="info"><div class="title">Pilla Zamindar</div><div class="year">2011</div><a class="link" href="https://www.youtube.com/watch?v=UQNe6CzRB_s" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="eega.png.png" alt="Eega"><div class="info"><div class="title">Eega</div><div class="year">2012</div><a class="link" href="https://www.youtube.com/watch?v=FbUybM4sybU" target="_blank">Watch Trailer</a><a class="link" href="https://en.wikipedia.org/wiki/Eega#Box_office" target="_blank">₹130 cr WW</a></div></div>
+    <div class="card"><img src="yeto.png.png" alt="Yeto Vellipoyindhi Manasu"><div class="info"><div class="title">Yeto Vellipoyindhi Manasu</div><div class="year">2012</div><a class="link" href="https://www.youtube.com/watch?v=FkMy0zls2Kg" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="pasia.png.png" alt="Paisaa"><div class="info"><div class="title">Paisa</div><div class="year">2014</div><a class="link" href="https://www.youtube.com/watch?v=9XVGg_fXxTI" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="ah" alt="Aaha Kalyanam"><div class="info"><div class="title">Aaha Kalyanam</div><div class="year">2014</div><a class="link" href="https://www.youtube.com/watch?v=a5D5pE8V-vw" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="" alt="Yevade Subramanyam"><div class="info"><div class="title">Yevade Subramanyam</div><div class="year">2015</div><a class="link" href="https://www.youtube.com/watch?v=JmPsmYpwg9U" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="bhale.png.png" alt="Bhale Bhale Magadivoy"><div class="info"><div class="title">Bhale Bhale Magadivoy</div><div class="year">2015</div><a class="link" href="https://www.youtube.com/watch?v=1nDJwlUoGOM" target="_blank">Watch Trailer</a><a class="link" href="https://en.wikipedia.org/wiki/Bhale_Bhale_Magadivoy#Box_office" target="_blank">₹55 cr WW</a></div></div>
+    <div class="card"><img src="kr" alt="Krishna Gaadi Veera Prema Gaadha"><div class="info"><div class="title">Krishna Gaadi Veera Prema Gaadha</div><div class="year">2016</div><a class="link" href="https://www.youtube.com/watch?v=IkTq-tctZns" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="gen.png.png" alt="Gentleman"><div class="info"><div class="title">Gentleman</div><div class="year">2016</div><a class="link" href="https://www.youtube.com/watch?v=5k-4lFMSK40" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="majnu.png.png" alt="Majnu"><div class="info"><div class="title">Majnu</div><div class="year">2016</div><a class="link" href="https://www.youtube.com/watch?v=sm6grC5wH88" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="local.png.png" alt="Nenu Local"><div class="info"><div class="title">Nenu Local</div><div class="year">2017</div><a class="link" href="https://www.youtube.com/watch?v=5TCEY58Qb08" target="_blank">Watch Trailer</a><a class="link" href="https://en.wikipedia.org/wiki/Nenu_Local#Box_office" target="_blank">₹60 cr WW</a></div></div>
+    <div class="card"><img src="nkori.png.png" alt="Ninnu Kori"><div class="info"><div class="title">Ninnu Kori</div><div class="year">2017</div><a class="link" href="https://www.youtube.com/watch?v=xVqS6hW5bFY" target="_blank">Watch Trailer</a><a class="link" href="https://en.wikipedia.org/wiki/Ninnu_Kori#Box_office" target="_blank">₹45 cr WW</a></div></div>
+    <div class="card"><img src="mca.png.png" alt="MCA"><div class="info"><div class="title">MCA (Middle Class Abbayi)</div><div class="year">2017</div><a class="link" href="https://www.youtube.com/watch?v=Pv3yARa4TVM" target="_blank">Watch Trailer</a><a class="link" href="https://en.wikipedia.org/wiki/MCA_(2017_film)#Box_office" target="_blank">₹70 cr WW</a></div></div>
+    <div class="card"><img src="krishyudhdham.png.png" alt="Krishnarjuna Yuddham"><div class="info"><div class="title">Krishnarjuna Yuddham</div><div class="year">2018</div><a class="link" href="https://www.youtube.com/watch?v=4MzgnZsZbT0" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="" alt="Devadas"><div class="info"><div class="title">Devadas</div><div class="year">2018</div><a class="link" href="https://www.youtube.com/watch?v=2kSsmrCEW20" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="jersey.png.png" alt="Jersey"><div class="info"><div class="title">Jersey</div><div class="year">2019</div><a class="link" href="https://www.youtube.com/watch?v=QPKC3O9N6Eo" target="_blank">Watch Trailer</a><a class="link" href="https://en.wikipedia.org/wiki/Jersey_(2019_film)#Box_office" target="_blank">₹75 cr WW</a></div></div>
+    <div class="card"><img src="gang.png.png" alt="Gang Leader"><div class="info"><div class="title">Gang Leader</div><div class="year">2019</div><a class="link" href="https://www.youtube.com/watch?v=F8hFBNL3TtE" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="v.png.png" alt="V"><div class="info"><div class="title">V</div><div class="year">2020</div><a class="link" href="https://www.youtube.com/watch?v=wIxbz05FzrY" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="tuck.png.png" alt="Tuck Jagadish"><div class="info"><div class="title">Tuck Jagadish</div><div class="year">2021</div><a class="link" href="https://www.youtube.com/watch?v=3WyXlN2Yc5I" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="ssroy.png.png" alt="Shyam Singha Roy"><div class="info"><div class="title">Shyam Singha Roy</div><div class="year">2021</div><a class="link" href="https://www.youtube.com/watch?v=R1u6tF9YBYw" target="_blank">Watch Trailer</a><a class="link" href="https://en.wikipedia.org/wiki/Shyam_Singha_Roy#Box_office" target="_blank">₹50 cr WW</a></div></div>
+    <div class="card"><img src="ante.png.png" alt="Ante Sundaraniki"><div class="info"><div class="title">Ante Sundaraniki</div><div class="year">2022</div><a class="link" href="https://www.youtube.com/watch?v=sbLVN5rj4S4" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="dasara.png.png" alt="Dasara"><div class="info"><div class="title">Dasara</div><div class="year">2023</div><a class="link" href="https://www.youtube.com/watch?v=F4El9A1R3zs" target="_blank">Watch Trailer</a><a class="link" href="https://en.wikipedia.org/wiki/Dasara_(film)#Box_office" target="_blank">₹137 cr WW</a></div></div>
+    <div class="card"><img src="hi nanna.png.png" alt="Hi Nanna"><div class="info"><div class="title">Hi Nanna</div><div class="year">2023</div><a class="link" href="https://www.youtube.com/watch?v=OgIRAjnnJzI" target="_blank">Watch Trailer</a><a class="link" href="https://en.wikipedia.org/wiki/Hi_Nanna#Box_office" target="_blank">₹92 cr WW</a></div></div>
+    <div class="card"><img src="" alt="Saripodhaa Sanivaaram"><div class="info"><div class="title">Saripodhaa Sanivaaram</div><div class="year">2024</div><a class="link" href="https://www.youtube.com/watch?v=nycJkH6xG3A" target="_blank">Watch Trailer</a></div></div>
+  </div>
+
+
+
+  <a href="index.html" class="back-btn">⬅ Back to Home</a>
+
+<script>
+const movies = [
+  { title: 'Eega', collection: 130, year: 2012 },
+  { title: 'Bhale Bhale Magadivoy', collection: 55, year: 2015 },
+  { title: 'Nenu Local', collection: 60, year: 2017 },
+  { title: 'MCA', collection: 70, year: 2017 },
+  { title: 'Ninnu Kori', collection: 45, year: 2017 },
+  { title: 'Jersey', collection: 75, year: 2019 },
+  { title: 'Shyam Singha Roy', collection: 50, year: 2021 },
+  { title: 'Dasara', collection: 137, year: 2023 },
+  { title: 'Hi Nanna', collection: 92, year: 2023 }
+];
+
+const sortedMovies = [...movies].sort((a,b)=>a.year-b.year);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jr NTR — Young Tiger Dashboard & Filmography</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { background: #000; color: #fff; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    header.hero {
+      background: url("") center/cover no-repeat;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    header.hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
+    }
+    header.hero h1 {
+      position: relative;
+      font-size: 3em;
+      color: #fff;
+      z-index: 2;
+      text-shadow: 0 0 10px #f9a825;
+    }
+    .bio {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      font-size: 1.1em;
+    }
+    .grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; padding: 20px; }
+    .card {
+      background: #181818;
+      border-radius: 10px;
+      width: 260px;
+      overflow: hidden;
+      box-shadow: 0 0 12px rgba(249,168,37,0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(249,168,37,0.9); }
+    .card img { width: 100%; aspect-ratio: 16 / 9; height: auto; object-fit: cover; }
+    .info { padding: 12px; }
+    .title { font-size: 1em; font-weight: bold; margin-bottom: 4px; color: #fff; }
+    .year { color: #bbb; margin-bottom: 6px; }
+    .link { display: block; margin: 4px 0; color: #f9a825; text-decoration: none; font-size: 0.9em; }
+    .charts { background: #111; padding: 30px; text-align: center; }
+    canvas { max-width: 800px; margin: 20px auto; display: block; }
+    .back-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #f9a825;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 10px rgba(249,168,37,0.8);
+      transition: background 0.3s ease;
+    }
+    .back-btn:hover { background: #d19b00; }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>Jr NTR — Young Tiger</h1>
+  </header>
+
+  <section class="bio">
+    Nandamuri Taraka Rama Rao Jr., popularly known as Jr NTR, is one of the leading stars of Telugu cinema.
+    Known for his intense performances, mass appeal, and exceptional dance skills, NTR has delivered several blockbusters and continues to be a major force in Indian cinema.
+  </section>
+
+  <div class="grid">
+    <!-- Full Filmography Cards -->
+    <div class="card"><img src="student no 1 (2).png" alt="Student No.1"><div class="info"><div class="title">Student No.1</div><div class="year">2001</div><a class="link" href="https://www.youtube.com/watch?v=RM7iZDK9sbo" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="subbu (2).png" alt="Subbu"><div class="info"><div class="title">Subbu</div><div class="year">2001</div><a class="link" href="https://www.youtube.com/watch?v=OMQpu6bIR_8" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="aadi (2).png" alt="Aadi"><div class="info"><div class="title">Aadi</div><div class="year">2002</div><a class="link" href="https://www.youtube.com/watch?v=jJ0IUlU7v1o" target="_blank">Watch Trailer</a><a class="link" href="#">₹25 cr WW</a></div></div>
+    <div class="card"><img src="allari ramudu (2).png" alt="Allari Ramudu"><div class="info"><div class="title">Allari Ramudu</div><div class="year">2002</div><a class="link" href="https://www.youtube.com/watch?v=cSDZ0MYPxMQ" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="naaga (2).png" alt="Naaga"><div class="info"><div class="title">Naaga</div><div class="year">2003</div><a class="link" href="https://www.youtube.com/watch?v=bHuwFqV9oeg" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="simhaadri (2).png" alt="Simhadri"><div class="info"><div class="title">Simhadri</div><div class="year">2003</div><a class="link" href="https://www.youtube.com/watch?v=NCiSL7Z4WRA" target="_blank">Watch Trailer</a><a class="link" href="#">₹30 cr WW</a></div></div>
+    <div class="card"><img src="andhrawala (2).png" alt="Andhrawala"><div class="info"><div class="title">Andhrawala</div><div class="year">2004</div><a class="link" href="https://www.youtube.com/watch?v=oh-ZyI0fQUU" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="samba (2).png" alt="Samba"><div class="info"><div class="title">Samba</div><div class="year">2004</div><a class="link" href="https://www.youtube.com/watch?v=Zf9RQscf8Rk" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="naa alludu (2).png" alt="Naa Alludu"><div class="info"><div class="title">Naa Alludu</div><div class="year">2005</div><a class="link" href="https://www.youtube.com/watch?v=sQeqNGHX3oM" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="narasimhudu (2).png" alt="Narasimhudu"><div class="info"><div class="title">Narasimhudu</div><div class="year">2005</div><a class="link" href="https://www.youtube.com/watch?v=U0kNR6vbwDo" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="ashok (2).png" alt="Ashok"><div class="info"><div class="title">Ashok</div><div class="year">2006</div><a class="link" href="https://www.youtube.com/watch?v=opkg4oZ9TgE" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="rakhi (2).png" alt="Rakhi"><div class="info"><div class="title">Rakhi</div><div class="year">2006</div><a class="link" href="https://www.youtube.com/watch?v=8EJPumYb6Y4" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="yamadonga (2).png" alt="Yamadonga"><div class="info"><div class="title">Yamadonga</div><div class="year">2007</div><a class="link" href="https://www.youtube.com/watch?v=5U6v-qGOkCw" target="_blank">Watch Trailer</a><a class="link" href="#">₹28 cr WW</a></div></div>
+    <div class="card"><img src="kantri (2).png" alt="Kantri"><div class="info"><div class="title">Kantri</div><div class="year">2008</div><a class="link" href="https://www.youtube.com/watch?v=3jqK4djoAAs" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="adhurs (2).png" alt="Adhurs"><div class="info"><div class="title">Adhurs</div><div class="year">2010</div><a class="link" href="https://www.youtube.com/watch?v=lY5e4pCId3c" target="_blank">Watch Trailer</a><a class="link" href="#">₹30 cr WW</a></div></div>
+    <div class="card"><img src="brindaavanam (2).png" alt="Brindavanam"><div class="info"><div class="title">Brindavanam</div><div class="year">2010</div><a class="link" href="https://www.youtube.com/watch?v=KLRhP9ExkE4" target="_blank">Watch Trailer</a><a class="link" href="#">₹25 cr WW</a></div></div>
+    <div class="card"><img src="oosaravelli (2).png" alt="Oosaravelli"><div class="info"><div class="title">Oosaravelli</div><div class="year">2011</div><a class="link" href="https://www.youtube.com/watch?v=bxGjIZ6HxHo" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="dhammu (2).png" alt="Dammu"><div class="info"><div class="title">Dammu</div><div class="year">2012</div><a class="link" href="https://www.youtube.com/watch?v=OM5_d_vC_cI" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="baadshah (2).png" alt="Baadshah"><div class="info"><div class="title">Baadshah</div><div class="year">2013</div><a class="link" href="https://www.youtube.com/watch?v=tu30x8V6O-4" target="_blank">Watch Trailer</a><a class="link" href="#">₹48 cr WW</a></div></div>
+    <div class="card"><img src="ramayya vasthaavayya (2).png" alt="Ramayya Vasthavayya"><div class="info"><div class="title">Ramayya Vasthavayya</div><div class="year">2013</div><a class="link" href="https://www.youtube.com/watch?v=6jKRf6WTpAk" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="rabhasa (2).png" alt="Rabhasa"><div class="info"><div class="title">Rabhasa</div><div class="year">2014</div><a class="link" href="https://www.youtube.com/watch?v=d7RSJ_WmJgQ" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="temper (2).png" alt="Temper"><div class="info"><div class="title">Temper</div><div class="year">2015</div><a class="link" href="https://www.youtube.com/watch?v=F3UZDcgAL2E" target="_blank">Watch Trailer</a><a class="link" href="#">₹75 cr WW</a></div></div>
+    <div class="card"><img src="nannaku prematho (2).png" alt="Nannaku Prematho"><div class="info"><div class="title">Nannaku Prematho</div><div class="year">2016</div><a class="link" href="https://www.youtube.com/watch?v=stGY9mffoJ0" target="_blank">Watch Trailer</a><a class="link" href="#">₹87 cr WW</a></div></div>
+    <div class="card"><img src="janatha garage (2).png" alt="Janatha Garage"><div class="info"><div class="title">Janatha Garage</div><div class="year">2016</div><a class="link" href="https://www.youtube.com/watch?v=ghyL9MmaBC8" target="_blank">Watch Trailer</a><a class="link" href="#">₹135 cr WW</a></div></div>
+    <div class="card"><img src="jai lava kusa (2).png" alt="Jai Lava Kusa"><div class="info"><div class="title">Jai Lava Kusa</div><div class="year">2017</div><a class="link" href="https://www.youtube.com/watch?v=YJF1SBjv8pY" target="_blank">Watch Trailer</a><a class="link" href="#">₹175 cr WW</a></div></div>
+    <div class="card"><img src="aravindha sametha veera raghava (2).png" alt="Aravinda Sametha"><div class="info"><div class="title">Aravinda Sametha Veera Raghava</div><div class="year">2018</div><a class="link" href="https://www.youtube.com/watch?v=tL_ykzUelrI" target="_blank">Watch Trailer</a><a class="link" href="#">₹165 cr WW</a></div></div>
+    <div class="card"><img src="rrr.png" alt="RRR"><div class="info"><div class="title">RRR</div><div class="year">2022</div><a class="link" href="https://www.youtube.com/watch?v=NgBoMJy386M" target="_blank">Watch Trailer</a><a class="link" href="#">₹1258 cr WW</a></div></div>
+    <div class="card"><img src="devara (2).png" alt="Devara: Part 1"><div class="info"><div class="title">Devara: Part 1</div><div class="year">2024</div><a class="link" href="https://www.youtube.com/watch?v=Zy0cBa3EgcY" target="_blank">Watch Trailer</a><a class="link" href="#">TBD</a></div></div>
+  </div>
+
+ 
+
+  <a href="index.html" class="back-btn">⬅ Back to Home</a>
+
+<script>
+const movies = [
+  { title: 'RRR', collection: 1258, year: 2022 },
+  { title: 'Janatha Garage', collection: 135, year: 2016 },
+  { title: 'Jai Lava Kusa', collection: 175, year: 2017 },
+  { title: 'Aravinda Sametha', collection: 165, year: 2018 },
+  { title: 'Temper', collection: 75, year: 2015 },
+  { title: 'Nannaku Prematho', collection: 87, year: 2016 },
+  { title: 'Yamadonga', collection: 28, year: 2007 },
+  { title: 'Simhadri', collection: 30, year: 2003 }
+];
+
+const sortedMovies = [...movies].sort((a, b) => a.year - b.year);
+
+</script>
+</body>
+</html>
