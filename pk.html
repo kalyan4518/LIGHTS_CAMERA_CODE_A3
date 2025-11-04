@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pawan Kalyan — Power Star Dashboard & Filmography</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { background: #000; color: #fff; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    header.hero {
+      background: url("") center/cover no-repeat;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    header.hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
+    }
+    header.hero h1 {
+      position: relative;
+      font-size: 3em;
+      color: #ffcc00;
+      z-index: 2;
+      text-shadow: 0 0 10px #ff0000;
+    }
+    .bio {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      font-size: 1.1em;
+    }
+    .grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; padding: 20px; }
+    .card {
+      background: #181818;
+      border-radius: 10px;
+      width: 260px;
+      overflow: hidden;
+      box-shadow: 0 0 12px rgba(255, 204, 0, 0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(255, 204, 0, 0.9); }
+    .card img { width: 100%; aspect-ratio: 16 / 9; height: auto; object-fit: cover; }
+    .info { padding: 12px; }
+    .title { font-size: 1em; font-weight: bold; margin-bottom: 4px; color: #fff; }
+    .year { color: #bbb; margin-bottom: 6px; }
+    .link { display: block; margin: 4px 0; color: #ffcc00; text-decoration: none; font-size: 0.9em; }
+    .charts { background: #111; padding: 30px; text-align: center; }
+    canvas { max-width: 800px; margin: 20px auto; display: block; }
+    .back-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #ffcc00;
+      color: black;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 10px rgba(255,204,0,0.8);
+      transition: background 0.3s ease;
+    }
+    .back-btn:hover { background: #e6b800; }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>Pawan Kalyan — Power Star</h1>
+  </header>
+
+  <section class="bio">
+    Pawan Kalyan, fondly known as the Power Star, is one of Telugu cinema’s most influential and celebrated actors. Known for his charisma, mass appeal, and impactful dialogues, he has built a cult following and remains one of South India's biggest stars.
+  </section>
+
+  <div class="grid">
+    <!-- 30 Full Filmography Cards -->
+    <div class="card"><img src="akkad.png.png" alt="Akkada Ammayi Ikkada Abbayi"><div class="info"><div class="title">Akkada Ammayi Ikkada Abbayi</div><div class="year">1996</div><a class="link" href="https://www.youtube.com/results?search_query=Akkada+Ammayi+Ikkada+Abbayi+Trailer" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="gokulam.png.png" alt="Gokulamlo Seeta"><div class="info"><div class="title">Gokulamlo Seeta</div><div class="year">1997</div><a class="link" href="https://www.youtube.com/results?search_query=Gokulamlo+Seeta+Trailer" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="sus.png.png" alt="Suswagatham"><div class="info"><div class="title">Suswagatham</div><div class="year">1998</div><a class="link" href="https://www.youtube.com/results?search_query=Suswagatham+Trailer" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="tprema.png.png" alt="Tholi Prema"><div class="info"><div class="title">Tholi Prema</div><div class="year">1998</div><a class="link" href="https://www.youtube.com/watch?v=QZq0rrcZxBY" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="thammudu.png.png" alt="Thammudu"><div class="info"><div class="title">Thammudu</div><div class="year">1999</div><a class="link" href="https://www.youtube.com/results?search_query=Thammudu+Trailer" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="bhadri.png.png" alt="Badri"><div class="info"><div class="title">Badri</div><div class="year">2000</div><a class="link" href="https://www.youtube.com/watch?v=2RCu1LME0dY" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="kushi.png.png" alt="Kushi"><div class="info"><div class="title">Kushi</div><div class="year">2001</div><a class="link" href="https://www.youtube.com/watch?v=tdXJpluD5oA" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="johnny.png.png" alt="Johnny"><div class="info"><div class="title">Johnny</div><div class="year">2003</div><a class="link" href="https://www.youtube.com/watch?v=pPFXe9V0TXE" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="gudumba.png.png" alt="Gudumba Shankar"><div class="info"><div class="title">Gudumba Shankar</div><div class="year">2004</div><a class="link" href="https://www.youtube.com/results?search_query=Gudumba+Shankar+Trailer" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="balu.png.png" alt="Balu"><div class="info"><div class="title">Balu ABCDEFG</div><div class="year">2005</div><a class="link" href="https://www.youtube.com/results?search_query=Balu+Trailer+Pawan+Kalyan" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="bangaram.png.png" alt="Bangaram"><div class="info"><div class="title">Bangaram</div><div class="year">2006</div><a class="link" href="https://www.youtube.com/results?search_query=Bangaram+Trailer" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="annavaram.png.png" alt="Annavaram"><div class="info"><div class="title">Annavaram</div><div class="year">2006</div><a class="link" href="https://www.youtube.com/results?search_query=Annavaram+Trailer" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="jalsa.png.png" alt="Jalsa"><div class="info"><div class="title">Jalsa</div><div class="year">2008</div><a class="link" href="https://www.youtube.com/watch?v=qQ5K7yZBHRY" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="komaram puli.png.png" alt="Puli"><div class="info"><div class="title">Puli</div><div class="year">2010</div><a class="link" href="https://www.youtube.com/results?search_query=Puli+Trailer+Pawan+Kalyan" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="teenmaar.png.png" alt="Teen Maar"><div class="info"><div class="title">Teen Maar</div><div class="year">2011</div><a class="link" href="https://www.youtube.com/results?search_query=Teen+Maar+Trailer" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="panjaa.png.png" alt="Panjaa"><div class="info"><div class="title">Panjaa</div><div class="year">2011</div><a class="link" href="https://www.youtube.com/watch?v=rulWstKHcYg" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="gabbarsingh.png.png" alt="Gabbar Singh"><div class="info"><div class="title">Gabbar Singh</div><div class="year">2012</div><a class="link" href="https://www.youtube.com/watch?v=keB6cR9Hq6I" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="cmramgngthrmmbb.png.png" alt="Cameraman Ganga Tho Rambabu"><div class="info"><div class="title">Cameraman Ganga Tho Rambabu</div><div class="year">2012</div><a class="link" href="https://www.youtube.com/watch?v=QXjF82k5EZI" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="attar.png.png" alt="Attarintiki Daredi"><div class="info"><div class="title">Attarintiki Daredi</div><div class="year">2013</div><a class="link" href="https://www.youtube.com/watch?v=G_Lg1rrtTmA" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="gopalagopala.png.png" alt="Gopala Gopala"><div class="info"><div class="title">Gopala Gopala</div><div class="year">2015</div><a class="link" href="https://www.youtube.com/watch?v=9g5hfDRr9mg" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="sardar.png.png" alt="Sardaar Gabbar Singh"><div class="info"><div class="title">Sardaar Gabbar Singh</div><div class="year">2016</div><a class="link" href="https://www.youtube.com/watch?v=UO6KeS6EBp4" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="katama.png.png" alt="Katamarayudu"><div class="info"><div class="title">Katamarayudu</div><div class="year">2017</div><a class="link" href="https://www.youtube.com/watch?v=Nd9RV7uhh3c" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="agnyaaa.png.png" alt="Agnyaathavaasi"><div class="info"><div class="title">Agnyaathavaasi</div><div class="year">2018</div><a class="link" href="https://www.youtube.com/watch?v=TRTzGG6Bz74" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="pkk.png" alt="Vakeel Saab"><div class="info"><div class="title">Vakeel Saab</div><div class="year">2021</div><a class="link" href="https://www.youtube.com/watch?v=vvPgjS6tvHY" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="bheemla nayak.png.png" alt="Bheemla Nayak"><div class="info"><div class="title">Bheemla Nayak</div><div class="year">2022</div><a class="link" href="https://www.youtube.com/watch?v=xDFR3E6cT1I" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="komaram puli.png.png" alt="Bro"><div class="info"><div class="title">Bro</div><div class="year">2023</div><a class="link" href="https://www.youtube.com/watch?v=F5L5zjVNd_g" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="pkk.png" alt="OG"><div class="info"><div class="title">OG</div><div class="year">2024</div><a class="link" href="https://www.youtube.com/watch?v=ugP7T5IuXPw" target="_blank">Watch Trailer</a></div></div>
+    <div class="card"><img src="hhvmallu.png.png" alt="Hari Hara Veera Mallu"><div class="info"><div class="title">Hari Hara Veera Mallu</div><div class="year">2025</div><a class="link" href="https://www.youtube.com/results?search_query=Hari+Hara+Veera+Mallu+Trailer" target="_blank">Watch Trailer</a></div></div>
+  </div>
+
+  <a href="index.html" class="back-btn">⬅ Back to Home</a>
+
+  <script>
+  const movies = [
+    { title: 'Attarintiki Daredi', collection: 187, year: 2013 },
+    { title: 'Gabbar Singh', collection: 150, year: 2012 },
+    { title: 'Vakeel Saab', collection: 137, year: 2021 },
+    { title: 'Bheemla Nayak', collection: 193, year: 2022 },
+    { title: 'Katamarayudu', collection: 95, year: 2017 },
+    { title: 'Agnyaathavaasi', collection: 91, year: 2018 },
+    { title: 'Jalsa', collection: 42, year: 2008 },
+    { title: 'Tholi Prema', collection: 30, year: 1998 },
+    { title: 'OG', collection: 250, year: 2024 }
+  ];
+
+ 
+  </script>
+</body>
+</html>

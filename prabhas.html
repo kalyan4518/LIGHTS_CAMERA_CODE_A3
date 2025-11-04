@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prabhas — Rebel Star Dashboard & Filmography</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { background: #000; color: #fff; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    header.hero {
+      background: url(kalki.png) center/cover no-repeat;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    header.hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
+    }
+    header.hero h1 {
+      position: relative;
+      font-size: 3em;
+      color: #fff;
+      z-index: 2;
+      text-shadow: 0 0 10px #e50914;
+    }
+    .bio {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      font-size: 1.1em;
+    }
+    .grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; padding: 20px; }
+    .card {
+      background: #181818;
+      border-radius: 10px;
+      width: 260px;
+      overflow: hidden;
+      box-shadow: 0 0 12px rgba(229, 9, 20, 0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(229, 9, 20, 0.9); }
+    .card img { width: 100%; aspect-ratio: 16 / 9; height: auto; object-fit: cover; }
+    .info { padding: 12px; }
+    .title { font-size: 1em; font-weight: bold; margin-bottom: 4px; color: #fff; }
+    .year { color: #bbb; margin-bottom: 6px; }
+    .link { display: block; margin: 4px 0; color: #e50914; text-decoration: none; font-size: 0.9em; }
+    .link:hover { text-decoration: underline; }
+    .charts { background: #111; padding: 30px; text-align: center; }
+    canvas { max-width: 800px; margin: 20px auto; display: block; }
+    .back-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #e50914;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 10px rgba(229, 9, 20, 0.8);
+      transition: background 0.3s ease;
+    }
+    .back-btn:hover { background: #b20710; }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>INDIA'S BIGGEST SUPERSTAR 
+           PRABHAS
+    </h1>
+  </header>
+
+  <section class="bio">
+    Prabhas, known as the Rebel Star, is one of India's biggest Pan-India actors. Rising to global fame with the Baahubali series,
+    he holds multiple records for highest-grossing Telugu films and continues to dominate box office charts with massive action spectacles.
+  </section>
+
+  <div class="grid">
+<div class="card"><img src="eeshwar.jpg" alt="Eeswar"><div class="info"><div class="title">Eeswar</div><div class="year">2002</div><a class="link" href="https://youtu.be/gTA9ghC4ehs" target="_blank">Watch Trailer</a></div></div>
+<div class="card"><img src="raghavendrA.jpg" alt="Raghavendra"><div class="info"><div class="title">Raghavendra</div><div class="year">2003</div><a class="link" href="https://www.youtube.com/results?search_query=Raghavendra+2003+trailer+Prabhas" target="_blank">Watch Trailer</a></div></div>
+<div class="card"><img src="varsham.jpg" alt="Varsham"><div class="info"><div class="title">Varsham</div><div class="year">2004</div><a class="link" href="https://www.youtube.com/watch?v=R3N0ZqDDt6o" target="_blank">Watch Trailer</a><a class="link" href="#" target="_blank">₹20 cr WW</a></div></div>
+<div class="card"><img src="adavi rumdu.jpg" alt="Adavi Ramudu"><div class="info"><div class="title">Adavi Ramudu</div><div class="year">2004</div><a class="link" href="https://www.youtube.com/results?search_query=Adavi+Ramudu+2004+trailer" target="_blank">Watch Trailer</a></div></div>
+<div class="card"><img src="chakram.jpg" alt="Chakram"><div class="info"><div class="title">Chakram</div><div class="year">2005</div><a class="link" href="https://www.youtube.com/results?search_query=Chakram+2005+trailer+Prabhas" target="_blank">Watch Trailer</a></div></div>
+<div class="card"><img src="chatrapathi.jpg.jpg" alt="Chatrapathi"><div class="info"><div class="title">Chatrapathi</div><div class="year">2005</div><a class="link" href="https://www.youtube.com/results?search_query=Chatrapathi+2005+trailer+Prabhas" target="_blank">Watch Trailer</a><a class="link" href="#" target="_blank">₹22 cr WW</a></div></div>
+<div class="card"><img src="pournami.jpg" alt="Pournami"><div class="info"><div class="title">Pournami</div><div class="year">2006</div><a class="link" href="https://www.youtube.com/results?search_query=Pournami+2006+trailer" target="_blank">Watch Trailer</a></div></div>
+<div class="card"><img src="yogi.jpg" alt="Yogi"><div class="info"><div class="title">Yogi</div><div class="year">2007</div><a class="link" href="https://www.youtube.com/results?search_query=Yogi+2007+trailer" target="_blank">Watch Trailer</a></div></div>
+<div class="card"><img src="munna.jpg" alt="Munna"><div classinfo><div class="title">Munna</div><div class="year">2007</div><a class="link" href="https://www.youtube.com/watch?v=kp-DZb6zpvA" target="_blank">Watch Trailer</a></div></div>
+<div class="card"><img src="bujjigadu.jpg.jpg" alt="Bujjigadu"><div class="info"><div class="title">Bujjigadu</div><div class="year">2008</div><a class="link" href="https://www.youtube.com/watch?v=kt3yyYQgh8M" target="_blank">Watch Trailer</a></div></div>
+<div class="card"><img src="billa.jpg.jpg" alt="Billa"><div class="info"><div class="title">Billa</div><div class="year">2009</div><a class="link" href="https://www.youtube.com/watch?v=TRXkYy2tA-A" target="_blank">Watch Trailer</a></div></div>
+<div class="card"><img src="ek niranjan.jpg" alt="Ek Niranjan"><div class="info"><div class="title">Ek Niranjan</div><div class="year">2009</div><a class="link" href="https://www.youtube.com/watch?v=dsZnhqkXxdI" target="_blank">Watch Trailer</a></div></div>
+<div class="card"><img src="darling.jpg.jpg" alt="Darling"><div class="info"><div class="title">Darling</div><div class="year">2010</div><a class="link" href="https://www.youtube.com/watch?v=ErmlfGIrA8s" target="_blank">Watch Trailer</a></div></div>
+<div class="card"><img src="mr perfect.jpg" alt="Mr. Perfect"><div class="info"><div class="title">Mr. Perfect</div><div class="year">2011</div><a class="link" href="https://www.youtube.com/watch?v=r6P2n62FoAo" target="_blank">Watch Trailer</a></div></div>
+<div class="card"><img src="rebel.jpg" alt="Rebel"><div class="info"><div class="title">Rebel</div><div class="year">2012</div><a class="link" href="https://www.youtube.com/watch?v=ZltP0_ZU0y8" target="_blank">Watch Trailer</a></div></div>
+<div class="card"><img src="mirchi.jpg" alt="Mirchi"><div class="info"><div class="title">Mirchi</div><div class="year">2013</div><a class="link" href="https://www.youtube.com/watch?v=3P4MH1bhtUw" target="_blank">Watch Trailer</a><a class="link" href="#" target="_blank">₹82 cr WW</a></div></div>
+<div class="card"><img src="bb 1.jpg" alt="Baahubali: The Beginning"><div class="info"><div class="title">Baahubali: The Beginning</div><div class="year">2015</div><a class="link" href="https://www.youtube.com/watch?v=sOEg_YZQsTI" target="_blank">Watch Trailer</a><a class="link" href="#" target="_blank">₹650 cr WW</a></div></div>
+<div class="card"><img src="baahubali2.jpg" alt="Baahubali 2"><div class="info"><div class="title">Baahubali 2: The Conclusion</div><div class="year">2017</div><a class="link" href="https://www.youtube.com/watch?v=G62HrubdD6o" target="_blank">Watch Trailer</a><a class="link" href="#" target="_blank">₹1,748 cr WW</a></div></div>
+<div class="card"><img src="saaho.png" alt="Saaho"><div class="info"><div class="title">Saaho</div><div class="year">2019</div><a class="link" href="https://www.youtube.com/watch?v=lD0-ztCFydA" target="_blank">Watch Trailer</a><a class="link" href="#" target="_blank">₹435 cr WW</a></div></div>
+<div class="card"><img src="radeshyam.jpg" alt="Radhe Shyam"><div class="info"><div class="title">Radhe Shyam</div><div class="year">2022</div><a class="link" href="https://www.youtube.com/watch?v=6lRWWJ2VxzI" target="_blank">Watch Trailer</a><a class="link" href="#" target="_blank">₹300 cr WW</a></div></div>
+<div class="card"><img src="adp.jpg" alt="Adipurush"><div class="info"><div class="title">Adipurush</div><div class="year">2023</div><a class="link" href="https://www.youtube.com/watch?v=RZYSkHsTS9Y" target="_blank">Watch Trailer</a><a class="link" href="#" target="_blank">₹450 cr WW</a></div></div>
+<div class="card"><img src="salaar.jpg" alt="Salaar"><div class="info"><div class="title">Salaar: Part 1 – Ceasefire</div><div class="year">2023</div><a class="link" href="https://www.youtube.com/watch?v=qw5eVjTx_xg" target="_blank">Watch Trailer</a><a class="link" href="#" target="_blank">₹656 cr WW</a></div></div>
+<div class="card"><img src="kalki.png" alt="Kalki 2898 AD"><div class="info"><div class="title">Kalki 2898 AD</div><div class="year">2024</div><a class="link" href="https://www.youtube.com/watch?v=LQ0Obge281c" target="_blank">Watch Trailer</a><a class="link" href="#" target="_blank">₹1,200 cr WW +</a></div></div>
+
+
+  <a href="index.html" class="back-btn">⬅ Back to Home</a>
+
+  <script>
+  const movies = [
+    { title: 'Baahubali 2', collection: 1748, year: 2017 },
+    { title: 'Kalki 2898 AD', collection: 1200, year: 2024 },
+    { title: 'Baahubali 1', collection: 650, year: 2015 },
+    { title: 'Salaar', collection: 656, year: 2023 },
+    { title: 'Saaho', collection: 435, year: 2019 },
+    { title: 'Radhe Shyam', collection: 300, year: 2022 },
+    { title: 'Adipurush', collection: 450, year: 2023 },
+    { title: 'Mirchi', collection: 82, year: 2013 }
+  ];
+
+  </script>
+</body>
+</html>
