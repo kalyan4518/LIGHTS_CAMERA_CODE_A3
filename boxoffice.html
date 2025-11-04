@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Box Office - Heroes</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      background: #0b0b0d;
+      color: #fff;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #111;
+      padding: 15px 25px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.6);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #ffcc00;
+      text-decoration: none;
+    }
+    nav a {
+      margin-left: 20px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: #ffcc00;
+    }
+    h1 {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 2.5rem;
+    }
+    canvas {
+      display: block;
+      max-width: 900px;
+      margin: 40px auto;
+      background: #111;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+    select {
+      background: #222;
+      color: #fff;
+      border: 1px solid #555;
+      border-radius: 5px;
+      padding: 5px 10px;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">TFI POWERHOUSE</a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="boxoffice.html">Box Office</a>
+  </nav>
+  <select id="heroSelect">
+    <option value="prabhas">Prabhas</option>
+    <option value="allu">Allu Arjun</option>
+    <option value="mahesh">Mahesh Babu</option>
+    <option value="pawan">Pawan Kalyan</option>
+    <option value="nani">Nani</option>
+    <option value="ntr">Jr NTR</option>
+  </select>
+</header>
+
+<h1 id="heroTitle">Prabhas - Box Office Overview</h1>
+
+<canvas id="boxOfficeChart"></canvas>
+<canvas id="timelineChart"></canvas>
+
+<script>
+  const heroes = {
+      allu:[
+{ "title": "Sarrainodu", "year": 2016, "collection": 127 },
+{ "title": "DJ: Duvvada Jagannadham", "year": 2017, "collection": 115 },
+{ "title": "Naa Peru Surya, Naa Illu India", "year": 2018, "collection": 96 },
+{ "title": "Ala Vaikunthapurramuloo", "year": 2020, "collection": 262 },
+{ "title": "Pushpa: The Rise", "year": 2021, "collection": 365 },
+{ "title": "Pushpa 2: The Rule", "year": 2024, "collection": 1740 }
+],
+  prabhas: [
+  { "title": "Baahubali: The Beginning", "year": 2015, "collection": 650 },
+  { "title": "Baahubali 2: The Conclusion", "year": 2017, "collection": 1810 },
+  { "title": "Saaho", "year": 2019, "collection": 433 },
+  { "title": "Radhe Shyam", "year": 2022, "collection": 250 },
+  { "title": "Adipurush", "year": 2023, "collection": 450 },
+  { "title": "Salaar", "year": 2024, "collection": 715 },
+  { "title": "Kalki", "year": 2024, "collection": 1200 }
+],
+    mahesh:[
+  { "title": "Srimanthudu", "year": 2015, "collection": 145 },
+  { "title": "Bharat Ane Nenu", "year": 2018, "collection": 188 },
+  { "title": "Maharshi", "year": 2019, "collection": 175 },
+  { "title": "Sarileru Neekevvaru", "year": 2020, "collection": 260 },
+  { "title": "Sarkaru Vaari Paata", "year": 2022, "collection": 270 },
+  { "title": "Guntur Kaaram", "year": 2024, "collection": 276 }
+],
+    pawan:[
+  { "title": "Gabbar Singh", "year": 2012, "collection": 150 },
+  { "title": "Attarintiki Daredi", "year": 2013, "collection": 187 },
+  { "title": "Katamarayudu", "year": 2017, "collection": 110 },
+  { "title": "Agnyaathavaasi", "year": 2018, "collection": 95 },
+  { "title": "Vakeel Saab", "year": 2021, "collection": 140 },
+  { "title": "Bheemla Nayak", "year": 2022, "collection": 220 },
+  { "title": "OG", "year": 2025, "collection": 304 }
+],
+    nani: [
+  { "title": "Ninnu Kori", "year": 2017, "collection": 38 },
+  { "title": "Jersey", "year": 2019, "collection": 48 },
+  { "title": "Shyam Singha Roy", "year": 2021, "collection": 50 },
+  { "title": "Dasara", "year": 2023, "collection": 110 },
+  { "title": "Hi Nanna", "year": 2023, "collection": 74 },
+  { "title": "saripodha sanivaram", "year": 2024, "collection": 121 },
+  { "title": "Hit case 3", "year": 2024, "collection": 124 }
+],
+    ntr: [
+  { "title": "Temper", "year": 2015, "collection": 120 },
+   { "title": "jai lava kusa", "year": 2015, "collection": 86 },
+  { "title": "Janatha Garage", "year": 2016, "collection": 135 },
+  { "title": "Nannaku Prematho", "year": 2016, "collection": 110 },
+  { "title": "Aravinda Sametha", "year": 2018, "collection": 165 },
+  { "title": "RRR", "year": 2022, "collection": 1236 },
+  { "title": "Devara", "year": 2024, "collection": 546 }
+]
+  };
+
+  const ctx = document.getElementById('boxOfficeChart');
+  const ctx2 = document.getElementById('timelineChart');
+
+  let barChart, lineChart;
+
+  function renderCharts(heroKey) {
+    const movies = heroes[heroKey];
+    const sortedMovies = [...movies].sort((a, b) => a.year - b.year);
+
+    document.getElementById("heroTitle").textContent =
+      heroKey.charAt(0).toUpperCase() + heroKey.slice(1) + " - Box Office Overview";
+
+    if (barChart) barChart.destroy();
+    if (lineChart) lineChart.destroy();
+
+    barChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: movies.map(m => m.title),
+        datasets: [{
+          label: 'WW Collections (₹ Cr)',
+          data: movies.map(m => m.collection),
+          backgroundColor: '#e50914'
+        }]
+      },
+      options: {
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { ticks: { color: '#fff' } },
+          y: { ticks: { color: '#fff' } }
+        }
+      }
+    });
+
+    lineChart = new Chart(ctx2, {
+      type: 'line',
+      data: {
+        labels: sortedMovies.map(m => m.year),
+        datasets: [{
+          label: 'Collections over Time',
+          data: sortedMovies.map(m => m.collection),
+          borderColor: '#e50914',
+          backgroundColor: 'rgba(229,9,20,0.3)',
+          fill: true,
+          tension: 0.3
+        }]
+      },
+      options: {
+        plugins: { legend: { labels: { color: '#fff' } } },
+        scales: {
+          x: { ticks: { color: '#fff' } },
+          y: { ticks: { color: '#fff' } }
+        }
+      }
+    });
+  }
+
+  document.getElementById("heroSelect").addEventListener("change", (e) => {
+    renderCharts(e.target.value);
+  });
+
+  renderCharts("prabhas");
+</script>
+
+</body>
+</html>

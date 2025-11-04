@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Allu Arjun — Icon Star Dashboard & Filmography</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { background: #000; color: #fff; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    header.hero {
+      background: url('aa.webp') center/cover no-repeat;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    header.hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
+    }
+    header.hero h1 {
+      position: relative;
+      font-size: 3em;
+      color: #fff;
+      z-index: 2;
+      text-shadow: 0 0 10px #ff2d55;
+    }
+    .bio {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      font-size: 1.1em;
+    }
+    .grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; padding: 20px; }
+    .card {
+      background: #181818;
+      border-radius: 10px;
+      width: 260px;
+      overflow: hidden;
+      box-shadow: 0 0 12px rgba(255, 45, 85, 0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(255, 45, 85, 0.9); }
+  .card img { width: 100%; aspect-ratio: 16 / 9; height: auto; object-fit: cover; }
+    .info { padding: 12px; }
+    .title { font-size: 1em; font-weight: bold; margin-bottom: 4px; color: #fff; }
+    .year { color: #bbb; margin-bottom: 6px; }
+    .link { display: block; margin: 4px 0; color: #ff2d55; text-decoration: none; font-size: 0.9em; }
+    .charts { background: #111; padding: 30px; text-align: center; }
+    canvas { max-width: 800px; margin: 20px auto; display: block; }
+    .back-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #ff2d55;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 10px rgba(255, 45, 85, 0.8);
+      transition: background 0.3s ease;
+    }
+    .back-btn:hover { background: #b91c3a; }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>Allu Arjun — Icon Star</h1>
+  </header>
+
+  <section class="bio">
+    Allu Arjun, known as the Icon Star, is one of India's most stylish and versatile actors.
+    With electrifying dance moves, charismatic screen presence, and blockbuster performances,
+    he has redefined Telugu cinema and earned a massive Pan-India fanbase.
+  </section>
+
+  <div class="grid"><div class="card"><img src="Gangotri_film_poster.jpg" alt="Gangotri"><div class="info"><div class="title">Gangotri</div><div class="year">2003</div><a class="link" href="https://www.youtube.com/watch?v=4A1S1PVzcb8" target="_blank">Watch Trailer</a></div></div>
+<div class="card"><img src="arya-2.png" alt="Arya"><div class="info"><div class="title">Arya</div><div class="year">2004</div><a class="link" href="https://www.youtube.com/watch?v=n3QJzEFzodU" target="_blank">Watch Trailer</a><a class="link" href="#">₹30 cr WW</a></div></div>
+<div class="card"><img src="hq720.jpg" alt="Bunny"><div class="info"><div class="title">Bunny</div><div class="year">2005</div><a class="link" href="https://www.youtube.com/watch?v=9tGfA2cNYNE" target="_blank">Watch Trailer</a><a class="link" href="#">₹25 cr WW</a></div></div>
+<div class="card"><img src="happy.jpg" alt="Happy"><div class="info"><div class="title">Happy</div><div class="year">2006</div><a class="link" href="https://www.youtube.com/watch?v=CSUf-JYf8pI" target="_blank">Watch Trailer</a><a class="link" href="#">₹20 cr WW</a></div></div>
+<div class="card"><img src="DESHMUDHURU.jpeg" alt="Desamuduru"><div class="info"><div class="title">Desamuduru</div><div class="year">2007</div><a class="link" href="https://www.youtube.com/watch?v=fDsqWDLCLyM" target="_blank">Watch Trailer</a><a class="link" href="#">₹26 cr WW</a></div></div>
+<div class="card"><img src="parugu.png" alt="Parugu"><div class="info"><div class="title">Parugu</div><div class="year">2008</div><a class="link" href="https://www.youtube.com/watch?v=QkRFglAeuAk" target="_blank">Watch Trailer</a><a class="link" href="#">₹30 cr WW</a></div></div>
+<div class="card"><img src="arya-2.png" alt="Arya 2"><div class="info"><div class="title">Arya 2</div><div class="year">2009</div><a class="link" href="https://www.youtube.com/watch?v=PYjX-nqFGs8" target="_blank">Watch Trailer</a><a class="link" href="#">₹45 cr WW</a></div></div>
+<div class="card"><img src="vedam.png" alt="Vedam"><div class="info"><div class="title">Vedam</div><div class="year">2010</div><a class="link" href="https://www.youtube.com/watch?v=qS4ZUs_8jU8" target="_blank">Watch Trailer</a><a class="link" href="#">₹25 cr WW</a></div></div>
+<div class="card"><img src="badri.png" alt="Badrinath"><div class="info"><div class="title">Badrinath</div><div class="year">2011</div><a class="link" href="https://www.youtube.com/watch?v=8CmxsCSzktA" target="_blank">Watch Trailer</a><a class="link" href="#">₹78 cr WW</a></div></div>
+<div class="card"><img src="julayi.png" alt="Julayi"><div class="info"><div class="title">Julayi</div><div class="year">2012</div><a class="link" href="https://www.youtube.com/watch?v=l67DRHuCV6k" target="_blank">Watch Trailer</a><a class="link" href="#">₹85 cr WW</a></div></div>
+<div class="card"><img src="idddddd.png" alt="Iddarammayilatho"><div class="info"><div class="title">Iddarammayilatho</div><div class="year">2013</div><a class="link" href="https://www.youtube.com/watch?v=fyv0Y6WwTT0" target="_blank">Watch Trailer</a><a class="link" href="#">₹75 cr WW</a></div></div>
+<div class="card"><img src="rg.png" alt="Race Gurram"><div class="info"><div class="title">Race Gurram</div><div class="year">2014</div><a class="link" href="https://www.youtube.com/watch?v=5f0FiUxuQUs" target="_blank">Watch Trailer</a><a class="link" href="#">₹102 cr WW</a></div></div>
+<div class="card"><img src="sos.png" alt="S/O Satyamurthy"><div class="info"><div class="title">S/O Satyamurthy</div><div class="year">2015</div><a class="link" href="https://www.youtube.com/watch?v=K7v0K9o0bdc" target="_blank">Watch Trailer</a><a class="link" href="#">₹90 cr WW</a></div></div>
+<div class="card"><img src="sar.png" alt="Sarrainodu"><div class="info"><div class="title">Sarrainodu</div><div class="year">2016</div><a class="link" href="https://www.youtube.com/watch?v=X3-bW9C9T0Q" target="_blank">Watch Trailer</a><a class="link" href="#">₹127 cr WW</a></div></div>
+<div class="card"><img src="dj.png" alt="Duvvada Jagannadham (DJ)"><div class="info"><div class="title">Duvvada Jagannadham (DJ)</div><div class="year">2017</div><a class="link" href="https://www.youtube.com/watch?v=BCx5nDTWeII" target="_blank">Watch Trailer</a><a class="link" href="#">₹115 cr WW</a></div></div>
+<div class="card"><img src="nps.png" alt="Naa Peru Surya"><div class="info"><div class="title">Naa Peru Surya</div><div class="year">2018</div><a class="link" href="https://www.youtube.com/watch?v=YSpAf9Z7XoA" target="_blank">Watch Trailer</a><a class="link" href="#">₹100 cr WW</a></div></div>
+<div class="card"><img src="avp.png" alt="Ala Vaikunthapurramuloo"><div class="info"><div class="title">Ala Vaikunthapurramuloo</div><div class="year">2020</div><a class="link" href="https://www.youtube.com/watch?v=sk7N4UrbAVs" target="_blank">Watch Trailer</a><a class="link" href="#">₹262 cr WW</a></div></div>
+<div class="card"><img src="pushpa 1.png" alt="Pushpa: The Rise"><div class="info"><div class="title">Pushpa: The Rise</div><div class="year">2021</div><a class="link" href="https://www.youtube.com/watch?v=Q1NKMPhP8PY" target="_blank">Watch Trailer</a><a class="link" href="#">₹360 cr WW</a></div></div>
+<div class="card"><img src="pushpa.png" alt="Pushpa: The Rule"><div class="info"><div class="title">Pushpa: The Rule</div><div class="year">2025</div><a class="link" href="https://www.youtube.com/watch?v=gU6hMnjbF9U" target="_blank">Watch Trailer</a><a class="link" href="#">₹700 cr (expected)</a></div></div>
+
+  </div>
+
+ 
+
+  <a href="index.html" class="back-btn">⬅ Back to Home</a>
+
+<script>
+const movies = [
+  { title: 'Pushpa 2', collection: 700, year: 2025 },
+  { title: 'Pushpa: The Rise', collection: 360, year: 2021 },
+  { title: 'Ala Vaikunthapurramuloo', collection: 262, year: 2020 },
+  { title: 'Sarrainodu', collection: 127, year: 2016 },
+  { title: 'DJ', collection: 115, year: 2017 },
+  { title: 'Race Gurram', collection: 102, year: 2014 },
+  { title: 'Naa Peru Surya', collection: 100, year: 2018 },
+  { title: 'Julayi', collection: 85, year: 2012 }
+];
+
+const sortedMovies = [...movies].sort((a, b) => a.year - b.year);
+
+// Box Office Chart
+const ctx = document.getElementById('boxOfficeChart');
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: movies.map(m => m.title),
+    datasets: [{
+      label: 'WW Collections (₹ Cr)',
+      data: movies.map(m => m.collection),
+      backgroundColor: '#ff2d55'
+    }]
+  },
+  options: {
+    plugins: { legend: { display: false } },
+    scales: { x: { ticks: { color: '#fff' } }, y: { ticks: { color: '#fff' } } }
+  }
+});
+</script>
+</body>
+</html>

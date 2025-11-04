@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Lights Camera Code</title>
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: #f8f8f8;
+      min-height: 100vh;
+      position: relative;
+      padding: 40px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      /* Background image behind the page content. Save the attached image as `about-bg.jpg` in the same folder as this file.
+         If you prefer a different filename, update the URL below. */
+      background: url('about-bg.jpg') center/cover no-repeat;
+      filter: blur(10px);
+      opacity: 0.65;
+      z-index: -2;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(6, 6, 8, 0.7);
+      z-index: -1;
+    }
+    .about-card {
+      background: rgba(0, 0, 0, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+      padding: 36px 42px;
+      max-width: 960px;
+      backdrop-filter: blur(5px);
+    }
+    .about-card h1 {
+      font-size: 2.4rem;
+      color: #ffcc00;
+      margin-bottom: 18px;
+    }
+    .about-card p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 16px;
+      color: #f0f0f0;
+    }
+    .about-highlight {
+      font-weight: 600;
+      color: #ffd966;
+      margin-top: 10px;
+    }
+    @media (max-width: 600px) {
+      body {
+        padding: 28px 12px;
+      }
+      .about-card {
+        padding: 28px 22px;
+      }
+      .about-card h1 {
+        font-size: 2rem;
+      }
+      .about-card p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="about-card">
+    <h1>Welcome to Lights Camera Code: The Hero Hub</h1>
+    <p>Wel come to Lights Camera Code: The Hero Hub — the ultimate digital space for movie lovers and hero fans.</p>
+    <p>This platform focuses exclusively on Tier-1 Generation Heroes, bringing you everything from their latest trailers, fan-favorite collections, to authentic reviews and movie updates.</p>
+    <p>It’s built for fans who live and breathe cinema — a one-stop destination to explore legendary heroes, celebrate their biggest hits, and stay connected with the pulse of the entertainment world.</p>
+    <p class="about-highlight">✨ Watch. Review. Collect. Celebrate.<br>At Lights Camera Code, the spotlight always shines on the heroes who define cinema.</p>
+  </section>
+</body>
+</html>
