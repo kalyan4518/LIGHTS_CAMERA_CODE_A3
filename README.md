@@ -67,7 +67,5 @@ S. RITHVIK
 
 🎥 Passionate about Web Development, Design & Indian Cinema
 
-📜 License
-
-This project is open source under the MIT License.
-Feel free to use, modify, and build upon it with credit.
+### 📝 License  
+This project is licensed under the **MIT License** © 2025 Varshith
