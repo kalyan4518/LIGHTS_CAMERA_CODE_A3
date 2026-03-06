@@ -1,4 +1,5 @@
 🎬 LIGHTS CAMERA CODE — Movie Portal
+LIVE DEMO LINK:https://polite-kleicha-2ce78c.netlify.app/
 🌟 Overview
 
 LIGHTS CAMERA CODE is a modern movie-based web application showcasing detailed film data — trailers, collections, and box-office analytics.
